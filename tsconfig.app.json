@@ -3,10 +3,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": ["node"],
+    "types": ["jest", "node"]
   },
-  "files": [
-    "src/main.ts"
-  ],
-  "include": ["src/**/*.ts", "postcss.config.ts"]
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.ts"]
 }
