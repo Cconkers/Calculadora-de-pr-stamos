@@ -1,0 +1,63 @@
+// Ocultar las flechas de incremento y decremento en campos de entrada numéricos para mejorar el diseño.
+
+// Esto desactiva los spinners en varios navegadores
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+:host::ng-deep {
+  .mat-mdc-text-field-wrapper{
+    height: 45px;
+  }
+  .mdc-text-field--outlined {
+    .mat-mdc-form-field-flex {
+      /* Common customizations for both labeled and non-labeled fields */
+      .mdc-notched-outline {
+        height: 45px;
+        padding-top: 10px;
+      }
+
+      .mdc-notched-outline--no-label {
+        height: 45px;
+        padding-top: 10px;
+      }
+
+      .mdc-notched-outline__notch {
+        .mdc-floating-label {
+          cursor: inherit;
+          top: 16px;
+        }
+      }
+    }
+
+    :focus-within .mdc-notched-outline,
+    :focus-within .mdc-notched-outline__leading,
+    :focus-within .mdc-notched-outline__trailing {
+      border-width: 1px !important;
+    }
+  }
+
+  .mdc-text-field--filled {
+    height: 40px;
+    padding-left: 3px;
+
+    .mat-mdc-form-field-flex .mat-mdc-form-field-infix {
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      /* Input text color and font size customization */
+      .mdc-text-field__input {
+        font-size: 12px;
+      }
+    }
+  }
+}

@@ -1,5 +1,38 @@
-<main class="main">
-<h1  class="text-3xl font-bold underline">Calculadora de Préstamos punto con</h1>
+<main class="main h-screen">
+  <!-- Sección del encabezado principal -->
+  <header class="h-1/6">
+    <!-- Título principal de la aplicación -->
+    <h2 class="flex justify-center">Simulador de Préstamos</h2>
+  </header>
+
+  <!-- Sección principal del contenido con una estructura etiquetada para accesibilidad -->
+  <section
+    aria-labelledby="section-title"
+    class="flex-col gap-x-4 w-full full-height-minus-header"
+  >
+    <!-- Encabezado oculto para lectores de pantalla que describe la sección -->
+    <h2 id="section-title" class="sr-only">Calculadora de préstamos</h2>
+
+    <!-- Sección de artículo para el componente TAE -->
+    <article class="p-5">
+      <header>
+        <!-- Subtítulo oculto para lectores de pantalla que describe el artículo -->
+        <h3 class="sr-only">Tasa Anual Equivalente (TAE)</h3>
+      </header>
+      <!-- Integración del componente TAE -->
+      <app-tae></app-tae>
+    </article>
+
+    <!-- Sección de artículo para el componente Tabla de Amortización -->
+    <article class="p-5 w-full">
+      <header>
+        <!-- Subtítulo oculto para lectores de pantalla que describe el artículo -->
+        <h3 class="sr-only">Tabla de Amortización</h3>
+      </header>
+      <!-- Integración del componente Tabla de Amortización con contenido centrado -->
+      <app-tabla-amortizacion></app-tabla-amortizacion>
+    </article>
+  </section>
 </main>
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->

@@ -1,0 +1,95 @@
+<form
+  [formGroup]="taeForm"
+  (ngSubmit)="sendFormTae(taeForm)"
+  class="flex flex-wrap gap-5 h-fit mx-10"
+>
+  <!-- Plantilla para un campo del formulario -->
+  <ng-template #formField let-controlName="controlName" let-label="label">
+    <mat-form-field class="h-[45px]" appearance="outline">
+      <mat-label [attr.aria-label]="label" [matTooltip]="label">
+        {{ label }}
+      </mat-label>
+      <input matInput type="number" [formControlName]="controlName" />
+      <!-- Mostrar mensaje de error si el campo es inválido y ha sido tocado -->
+      <mat-error
+        *ngIf="
+          taeForm.get(controlName)?.invalid && taeForm.get(controlName)?.touched
+        "
+      >
+        Por favor introduzca un valor
+      </mat-error>
+    </mat-form-field>
+  </ng-template>
+
+  <!-- Uso del ng-template para diferentes campos -->
+  <ng-container
+    *ngTemplateOutlet="
+      formField;
+      context: { controlName: 'capital', label: 'Capital Inicial' }
+    "
+  ></ng-container>
+  <ng-container
+    *ngTemplateOutlet="
+      formField;
+      context: { controlName: 'gastosOrigen', label: 'Gastos de Origen' }
+    "
+  ></ng-container>
+  <ng-container
+    *ngTemplateOutlet="
+      formField;
+      context: { controlName: 'gastosPeriodicos', label: 'Gastos Periódicos' }
+    "
+  ></ng-container>
+  <ng-container
+    *ngTemplateOutlet="
+      formField;
+      context: { controlName: 'periodo', label: 'Periodo' }
+    "
+  ></ng-container>
+  <ng-container
+    *ngTemplateOutlet="formField; context: { controlName: 'tin', label: 'TIN' }"
+  ></ng-container>
+  <ng-container
+    *ngTemplateOutlet="
+      formField;
+      context: { controlName: 'plazo', label: 'Plazo' }
+    "
+  ></ng-container>
+  <ng-container
+    *ngTemplateOutlet="
+      formField;
+      context: { controlName: 'tipoPlazo', label: 'Tipo de Plazo' }
+    "
+  ></ng-container>
+  <mat-checkbox class="example-margin" formControlName="hasTinPosterior"
+    >¿Tiene TIN Posterior?</mat-checkbox
+  >
+  <ng-container
+    *ngTemplateOutlet="
+      formField;
+      context: { controlName: 'tinPosterior', label: 'TIN Posterior' }
+    "
+  ></ng-container>
+  <ng-container
+    *ngTemplateOutlet="
+      formField;
+      context: { controlName: 'cambioTin', label: 'Cambio de TIN' }
+    "
+  ></ng-container>
+
+  <!-- Botón para calcular TAE del formulario -->
+  <mat-form-field floatLabel="always" class="h-[45px]" appearance="outline">
+    <mat-label aria-label="TAE" matTooltip="Tasa Anual Equivalente">
+      TAE
+    </mat-label>
+    <input
+      matInput
+      type="number"
+      readonly="true"
+      [placeholder]="tae.toString()"
+    />
+  </mat-form-field>
+  <button class="my-8 mx-2" mat-raised-button type="submit">
+    Calcular TAE
+  </button>
+</form>
